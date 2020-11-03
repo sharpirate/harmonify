@@ -23,7 +23,7 @@ app.get('/api/:query', async(req, res) => {
   const artists = await getArtists(req.params.query, token);
 
   if (artists.length > 0)
-    res.send(artists);
+    res.json(artists);
 })
 
 async function getToken(clientId, clientSecret) {
