@@ -53,6 +53,8 @@ function SearchField({ size }) {
 
   function handleInput(e) {
     setSearchValue(e.target.value);
+    fetch('/')
+      .then(console.log);
   }
 
   useEffect(() => {

@@ -18,6 +18,11 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
+// debug endpoint
+app.get('/', async(req, res) => {
+  res.send('hello');
+})
+
 // Search endpoint
 app.get('/api/:query', async(req, res) => {
   const artists = await getArtists(req.params.query, token);
