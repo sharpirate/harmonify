@@ -18,6 +18,7 @@ function Search() {
       fetch(`/api/search/${fieldValue}`)
         .then(res => res.json())
         .then(data => {
+          console.log(fieldValue)
           console.log(data);
           setResults(data);
         });

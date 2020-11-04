@@ -52,7 +52,11 @@ function Results({ results }) {
   return (
     <ResultsWrap>
       <StyledResults>
-        {results.map(result => <Result img={result.images[2].url} name={result.name} key={result.id} />)}
+        {results.map(result => {
+          const imgUrl = (result.images.length > 0) ? result.images[2].url : 'https://st2.depositphotos.com/4111759/12123/v/450/depositphotos_121233262-stock-illustration-male-default-placeholder-avatar-profile.jpg';
+
+          return <Result img={imgUrl} name={result.name} key={result.id} />
+        })}
       </StyledResults>
     </ResultsWrap>
   );
