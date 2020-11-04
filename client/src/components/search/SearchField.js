@@ -53,13 +53,13 @@ function SearchField({ size }) {
 
   function handleInput(e) {
     setSearchValue(e.target.value);
-    fetch('/')
-      .then(console.log);
   }
 
   useEffect(() => {
     if (searchValue) {
-      console.log('API call');
+      fetch(`/api/search/${searchValue}`)
+        .then(res => res.json())
+        .then(console.log);
     }
   }, [searchValue])
 

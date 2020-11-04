@@ -31,25 +31,24 @@ const StyledResults = styled.ul`
   padding: 1rem 0;
 `;
 
-const results = [
-  {
-    img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
-    name: `Aerosmith`,
-    id: 1
-  },
-  {
-    img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
-    name: `Guns N' Roses`,
-    id: 2
-  },
-  {
-    img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
-    name: `Tom Petty`,
-    id: 3
-  },
-];
-
 function Results() {
+  const results = [
+    {
+      img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
+      name: 'Aerosmith',
+      id: 0
+    },
+    {
+      img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
+      name: 'Guns N Roses',
+      id: 1
+    },
+    {
+      img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
+      name: 'Whitesnake',
+      id: 2
+    },
+  ];
   return (
     <ResultsWrap>
       <StyledResults>
