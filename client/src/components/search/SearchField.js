@@ -55,6 +55,8 @@ function SearchField(props) {
         spellcheck="false"
         value={props.value}
         onChange={props.handleInput}
+        onFocus={props.handleFocus}
+        onBlur={props.handleBlur}
       />
       <SearchIcon src={searchIcon} />
     </StyledSearchField>

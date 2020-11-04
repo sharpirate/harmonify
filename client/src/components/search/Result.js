@@ -26,6 +26,9 @@ const ResultImg = styled.img`
 const ResultName = styled.p`
   font-size: 1rem;
   color: ${theme.colors.light};
+  /* name overflow */
+  max-width: 250px;
+  overflow-wrap: break-word;
 `;
 
 function Result({ img, name }) {

@@ -8,9 +8,19 @@ const SearchWrap = styled.div``;
 function Search() {
   const [fieldValue, setFieldValue] = useState('');
   const [results, setResults] = useState([]);
+  const [resultsVisible, setResultsVisible] = useState(false);
 
   function handleInput(e) {
     setFieldValue(e.target.value);
+  }
+
+  function handleFocus() {
+    setResultsVisible(true);
+  }
+  
+  function handleBlur() {
+    setResultsVisible(false);
+    setFieldValue('');
   }
 
   useEffect(() => {
@@ -27,8 +37,13 @@ function Search() {
 
   return (
     <SearchWrap>
-      <SearchField value={fieldValue} handleInput={handleInput}/>
-      <Results results={results} />
+      <SearchField
+        value={fieldValue}
+        handleInput={handleInput}
+        handleFocus={handleFocus}
+        handleBlur={handleBlur}
+      />
+      <Results results={results} visible={resultsVisible} />
     </SearchWrap>
   );
 }

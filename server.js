@@ -21,7 +21,7 @@ app.listen(port, () => {
 // Search endpoint
 app.get('/api/search/:query', async (req, res) => {
   console.log('received search request');
-  const artists = await searchArtist(req.params.query, token, 5);
+  const artists = await searchArtist(req.params.query, token);
 
   console.log(artists);
   if (artists.length > 0)

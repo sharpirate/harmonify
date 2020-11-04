@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Result from './Result';
 import theme from '../../styled/theme';
 
@@ -10,6 +10,10 @@ const ResultsWrap = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+
+  opacity: ${props => props.visible ? '1' : '0'};
+  transition: opacity 0.3s ease;
+  }
 
   &::before {
     content: '';
@@ -31,26 +35,9 @@ const StyledResults = styled.ul`
   padding: 1rem 0;
 `;
 
-function Results({ results }) {
-  // const results = [
-  //   {
-  //     img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
-  //     name: 'Aerosmith',
-  //     id: 0
-  //   },
-  //   {
-  //     img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
-  //     name: 'Guns N Roses',
-  //     id: 1
-  //   },
-  //   {
-  //     img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
-  //     name: 'Whitesnake',
-  //     id: 2
-  //   },
-  // ];
+function Results({ results, visible }) {
   return (
-    <ResultsWrap>
+    <ResultsWrap visible={visible}>
       <StyledResults>
         {results.map(result => {
           const imgUrl = (result.images.length > 0) ? result.images[2].url : 'https://st2.depositphotos.com/4111759/12123/v/450/depositphotos_121233262-stock-illustration-male-default-placeholder-avatar-profile.jpg';
