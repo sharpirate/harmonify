@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import theme from '../../styled/theme';
 import searchIcon from '../../assets/svg/search.svg';
@@ -47,33 +46,17 @@ const SearchIcon = styled.img`
   pointer-events: none;
 `;
 
-function SearchField({ size }) {
-
-  const [searchValue, setSearchValue] = useState('');
-
-  function handleInput(e) {
-    setSearchValue(e.target.value);
-  }
-
-  useEffect(() => {
-    if (searchValue) {
-      fetch(`/api/search/${searchValue}`)
-        .then(res => res.json())
-        .then(console.log);
-    }
-  }, [searchValue])
-
+function SearchField(props) {
   return (
     <StyledSearchField>
       <StyledInput
         type="text"
         placeholder="Search For An Artist"
         spellcheck="false"
-        size={size}
-        value={searchValue}
-        onChange={handleInput}
+        value={props.value}
+        onChange={props.handleInput}
       />
-      <SearchIcon src={searchIcon} size={size} />
+      <SearchIcon src={searchIcon} />
     </StyledSearchField>
   );
 }

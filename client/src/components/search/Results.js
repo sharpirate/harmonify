@@ -31,28 +31,28 @@ const StyledResults = styled.ul`
   padding: 1rem 0;
 `;
 
-function Results() {
-  const results = [
-    {
-      img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
-      name: 'Aerosmith',
-      id: 0
-    },
-    {
-      img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
-      name: 'Guns N Roses',
-      id: 1
-    },
-    {
-      img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
-      name: 'Whitesnake',
-      id: 2
-    },
-  ];
+function Results({ results }) {
+  // const results = [
+  //   {
+  //     img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
+  //     name: 'Aerosmith',
+  //     id: 0
+  //   },
+  //   {
+  //     img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
+  //     name: 'Guns N Roses',
+  //     id: 1
+  //   },
+  //   {
+  //     img: 'https://www.btklsby.go.id/images/placeholder/camera.jpg',
+  //     name: 'Whitesnake',
+  //     id: 2
+  //   },
+  // ];
   return (
     <ResultsWrap>
       <StyledResults>
-        {results.map(result => <Result img={result.img} name={result.name} key={result.id} />)}
+        {results.map(result => <Result img={result.images[2].url} name={result.name} key={result.id} />)}
       </StyledResults>
     </ResultsWrap>
   );

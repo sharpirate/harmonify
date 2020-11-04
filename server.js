@@ -23,6 +23,7 @@ app.get('/api/search/:query', async (req, res) => {
   console.log('received search request');
   const artists = await searchArtist(req.params.query, token);
 
+  console.log(artists);
   if (artists.length > 0)
     res.json(artists);
 })
