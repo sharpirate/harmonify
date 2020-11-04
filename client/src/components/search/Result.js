@@ -27,7 +27,7 @@ const ResultName = styled.p`
   font-size: 1rem;
   color: ${theme.colors.light};
   /* name overflow */
-  max-width: 250px;
+  max-width: 220px;
   overflow-wrap: break-word;
 `;
 
