@@ -23,10 +23,22 @@ app.get('/api/search/:query', async (req, res) => {
   console.log('received search request');
   const artists = await searchArtist(req.params.query, token);
 
-  console.log(artists);
   if (artists.length > 0)
     res.json(artists);
-})
+});
+
+// Top Tracks endpoint
+app.get('/api/top-tracks/:id', async (req, res) => {
+  const tracks = await getTopTracks(req.params.id, 5, token);
+  res.json(tracks);
+});
+
+// Related Artists endpoint
+app.get('/api/related-artists/:id', async (req, res) => {
+  const artists = await getRelatedArtists(req.params.id, 5, token);
+  console.log('related')
+  res.json(artists);
+});
 
 async function getToken(clientId, clientSecret) {
   const config = {
@@ -57,4 +69,32 @@ async function searchArtist(query, token, limit = 3, offset = 0) {
   const res = await axios(config);
 
   return res.data.artists.items;
+}
+
+async function getTopTracks(id, limit = 5, token) {
+  const config = {
+    method: 'get',
+    url: `https://api.spotify.com/v1/artists/${id}/top-tracks?country=US`,
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const res = await axios(config);
+  return res.data.tracks.slice(0, limit);
+}
+
+async function getRelatedArtists(id, limit = 5, token) {
+  const config = {
+    method: 'get',
+    url: `https://api.spotify.com/v1/artists/${id}/related-artists`,
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const res = await axios(config);
+  return res.data.artists.slice(0, limit);
 }

@@ -35,21 +35,26 @@ const StyledRecord = styled.div`
   ${props => props.selected ? selectedStyle : defaultStyle};
 `;
 
-const RecordImg = styled.img`
+const RecordImg = styled.div`
   border-radius: 50%;
-  height: 50%;
+  height: 55%;
+  width: 55%;
+  /* border: 1px solid red; */
   margin: 1rem;
+  background: url(${props => props.img}) no-repeat center center/cover;
 `;
 
 const RecordName = styled.p`
   color: ${theme.colors.light};
   font-size: ${theme.record.size * 0.08}px;
+  text-align: center;
+  max-width: 90%;
 `;
 
 function Record({ img, name, selected }) {
   return (
     <StyledRecord selected={selected}>
-      <RecordImg src={img} draggable="false" />
+      <RecordImg img={img} />
       <RecordName>{name}</RecordName>
     </StyledRecord>
   );

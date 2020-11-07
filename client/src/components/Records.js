@@ -12,10 +12,10 @@ const StyledRecords = styled.ul`
   border-radius: ${theme.radius};
 `;
 
-function Records({ records }) {
+function Records({ records, defaultImg }) {
   return (
     <StyledRecords>
-      {records.map(record => <Record key={record.id} img={record.img} name={record.name} />)}
+      {records.map(record => <Record key={record.id} img={record.images[1].url} name={record.name} />)}
     </StyledRecords>
   );
 }
