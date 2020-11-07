@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Section from './Section';
 import Records from './Records';
+import Player from './player/Player';
 import { connect } from 'react-redux';
 
 function TopTracks({ artistId }) {
@@ -15,7 +16,8 @@ function TopTracks({ artistId }) {
 
   return (
     <Section name="Top Tracks">
-      <Records records={tracks} />
+      <Records records={tracks} defaultImg="https://vignette.wikia.nocookie.net/venturian-battle-headquarters/images/b/b1/Record_13.png/revision/latest?cb=20160730164224" />
+      <Player />
     </Section>
   );
 }

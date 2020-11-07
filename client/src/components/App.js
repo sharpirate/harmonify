@@ -11,7 +11,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <Selected />
-      {/* <TopTracks /> */}
+      <TopTracks />
       <Related />
     </React.Fragment>
   );

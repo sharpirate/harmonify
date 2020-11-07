@@ -44,7 +44,7 @@ function Search() {
         handleFocus={handleFocus}
         handleBlur={handleBlur}
       />
-      {resultsVisible ? <Results results={results} /> : null}
+      {resultsVisible ? <Results results={results} defaultImg="https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png" /> : null}
     </SearchWrap>
   );
 }

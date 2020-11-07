@@ -37,8 +37,8 @@ const StyledRecord = styled.div`
 
 const RecordImg = styled.div`
   border-radius: 50%;
-  height: 55%;
-  width: 55%;
+  height: 50%;
+  width: 50%;
   /* border: 1px solid red; */
   margin: 1rem;
   background: url(${props => props.img}) no-repeat center center/cover;

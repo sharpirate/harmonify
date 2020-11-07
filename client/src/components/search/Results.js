@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import Result from './Result';
 import theme from '../../styled/theme';
+import chooseImage from '../../utils/chooseImage';
 
 const ResultsWrap = styled.div`
   background: ${theme.colors.primary};
@@ -31,13 +32,13 @@ const StyledResults = styled.ul`
   padding: 1rem 0;
 `;
 
-function Results({ results, fade }) {
+function Results({ results, defaultImg, fade }) {
   // hide results if empty
   return results.length ? (
     <ResultsWrap fade={fade}>
       <StyledResults>
         {results.map(result => {
-          return <Result artist={result} key={result.id} />
+          return <Result artist={result} key={result.id} img={chooseImage(result.images, defaultImg)} />
         })}
       </StyledResults>
     </ResultsWrap>

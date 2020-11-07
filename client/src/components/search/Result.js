@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import theme from '../../styled/theme';
 import { connect } from 'react-redux';
+import chooseImage from '../../utils/chooseImage';
 
 const StyledResult = styled.li`
   display: inline-flex;
@@ -17,11 +18,13 @@ const StyledResult = styled.li`
   }
 `;
 
-const ResultImg = styled.img`
+const ResultImg = styled.div`
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  /* border: 1px solid red; */
   margin-right: 1rem;
+  background: url(${props => props.img}) no-repeat center center/cover;
 `;
 
 const ResultName = styled.p`
@@ -32,15 +35,10 @@ const ResultName = styled.p`
   overflow-wrap: break-word;
 `;
 
-function Result({ artist, selectArtist }) {
-
-  function chooseImage(images) {
-    return images.length ? images[images.length - 1].url : 'https://thumbs.dreamstime.com/b/default-avatar-photo-placeholder-profile-image-default-avatar-photo-placeholder-profile-image-eps-file-easy-to-edit-124557892.jpg';
-  }
-
+function Result({ artist, img, selectArtist }) {
   return (
     <StyledResult onClick={() => selectArtist(artist)}>
-      <ResultImg src={chooseImage(artist.images)} draggable="false" />
+      <ResultImg img={img} />
       <ResultName>{artist.name}</ResultName>
     </StyledResult>
   );

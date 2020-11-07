@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import theme from '../styled/theme';
 import Record from './Record';
+import chooseImage from '../utils/chooseImage';
 
 const StyledRecords = styled.ul`
   display: flex;
@@ -15,7 +16,7 @@ const StyledRecords = styled.ul`
 function Records({ records, defaultImg }) {
   return (
     <StyledRecords>
-      {records.map(record => <Record key={record.id} img={record.images[1].url} name={record.name} />)}
+      {records.map(record => <Record key={record.id} img={chooseImage(record.images, defaultImg)} name={record.name} />)}
     </StyledRecords>
   );
 }
