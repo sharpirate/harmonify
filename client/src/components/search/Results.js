@@ -37,9 +37,7 @@ function Results({ results, fade }) {
     <ResultsWrap fade={fade}>
       <StyledResults>
         {results.map(result => {
-          const imgUrl = (result.images.length > 0) ? result.images[2].url : 'https://st2.depositphotos.com/4111759/12123/v/450/depositphotos_121233262-stock-illustration-male-default-placeholder-avatar-profile.jpg';
-
-          return <Result img={imgUrl} name={result.name} id={result.id} key={result.id} />
+          return <Result artist={result} key={result.id} />
         })}
       </StyledResults>
     </ResultsWrap>

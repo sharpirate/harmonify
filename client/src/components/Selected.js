@@ -2,19 +2,23 @@ import Section from './Section';
 import Record from './Record';
 import { connect } from 'react-redux';
 
-function Selected({ name, img, id }) {
-  return (
+function Selected({ artist }) {
+  
+  function chooseImage(images) {
+    return images.length ? images[0].url : 'https://thumbs.dreamstime.com/b/default-avatar-photo-placeholder-profile-image-default-avatar-photo-placeholder-profile-image-eps-file-easy-to-edit-124557892.jpg';
+  }
+
+  return artist ? (
     <Section name="Selected Artist">
-      <Record name={name} img={img} id={id} selected />
+      <Record name={artist.name} img={chooseImage(artist.images)} selected />
     </Section>
-  );
+  ) : null;
 }
 
 function mapStateToProps(state) {
-  return {
-    name: state.selectedArtist.name,
-    img: state.selectedArtist.img
+    return {
+      artist: state.selectedArtist || null
+    }
   }
-}
 
-export default connect()(Selected);
+export default connect(mapStateToProps)(Selected);

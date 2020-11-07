@@ -32,19 +32,24 @@ const ResultName = styled.p`
   overflow-wrap: break-word;
 `;
 
-function Result({ img, name, id, selectArtist }) {
+function Result({ artist, selectArtist }) {
+
+  function chooseImage(images) {
+    return images.length ? images[images.length - 1].url : 'https://thumbs.dreamstime.com/b/default-avatar-photo-placeholder-profile-image-default-avatar-photo-placeholder-profile-image-eps-file-easy-to-edit-124557892.jpg';
+  }
+
   return (
-    <StyledResult onClick={() => selectArtist(id)}>
-      <ResultImg src={img} draggable="false" />
-      <ResultName>{name}</ResultName>
+    <StyledResult onClick={() => selectArtist(artist)}>
+      <ResultImg src={chooseImage(artist.images)} draggable="false" />
+      <ResultName>{artist.name}</ResultName>
     </StyledResult>
   );
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    selectArtist: id => {
-      dispatch({type: 'SELECT_ARTIST', id: id});
+    selectArtist: artist => {
+      dispatch({type: 'SELECT_ARTIST', artist});
     }
   }
 }

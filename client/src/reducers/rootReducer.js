@@ -1,13 +1,12 @@
-const initialState = {
-  selectedArtist: {}
-}
+const initialState = {};
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'SELECT_ARTIST':
-      console.log('action dispatched');
-      console.log(action);
-      break;
+      return {
+        ...state,
+        selectedArtist: action.artist,
+      }
     default:
       return state;
   }
