@@ -11,10 +11,6 @@ const ResultsWrap = styled.div`
   align-items: center;
   position: relative;
 
-  opacity: ${props => props.visible ? '1' : '0'};
-  transition: opacity 0.3s ease;
-  }
-
   &::before {
     content: '';
     width: 100%;
@@ -36,7 +32,8 @@ const StyledResults = styled.ul`
 `;
 
 function Results({ results, visible }) {
-  return (
+  // hide results if empty
+  return results.length ? (
     <ResultsWrap visible={visible}>
       <StyledResults>
         {results.map(result => {
@@ -46,7 +43,7 @@ function Results({ results, visible }) {
         })}
       </StyledResults>
     </ResultsWrap>
-  );
+  ) : null;
 }
 
 export default Results;

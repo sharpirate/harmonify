@@ -43,7 +43,7 @@ function Search() {
         handleFocus={handleFocus}
         handleBlur={handleBlur}
       />
-      <Results results={results} visible={resultsVisible} />
+      {resultsVisible ? <Results results={results} /> : null}
     </SearchWrap>
   );
 }

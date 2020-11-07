@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import Logo from './Logo';
+import Search from './search/Search';
 
 const StyledHeader = styled.header`
   position: relative;
@@ -10,10 +12,11 @@ const StyledHeader = styled.header`
   align-items: center;
 `;
 
-function Header({ children }) {
+function Header() {
   return (
     <StyledHeader>
-      {children}
+      <Logo />
+      <Search />
     </StyledHeader>
   );
 }
