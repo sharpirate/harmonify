@@ -3,7 +3,7 @@ import Section from './Section';
 import Records from './Records';
 import { connect } from 'react-redux';
 
-function Related({ artistId }) {
+function Related({ artistId, selectArtist }) {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
