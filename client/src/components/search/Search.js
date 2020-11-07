@@ -19,7 +19,8 @@ function Search() {
   }
   
   function handleBlur() {
-    setResultsVisible(false);
+    // catch the click on a result before hiding them
+    setTimeout(setResultsVisible.bind(this, false), 150);
     setFieldValue('');
   }
 

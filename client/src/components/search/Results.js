@@ -31,15 +31,15 @@ const StyledResults = styled.ul`
   padding: 1rem 0;
 `;
 
-function Results({ results, visible }) {
+function Results({ results, fade }) {
   // hide results if empty
   return results.length ? (
-    <ResultsWrap visible={visible}>
+    <ResultsWrap fade={fade}>
       <StyledResults>
         {results.map(result => {
           const imgUrl = (result.images.length > 0) ? result.images[2].url : 'https://st2.depositphotos.com/4111759/12123/v/450/depositphotos_121233262-stock-illustration-male-default-placeholder-avatar-profile.jpg';
 
-          return <Result img={imgUrl} name={result.name} key={result.id} />
+          return <Result img={imgUrl} name={result.name} id={result.id} key={result.id} />
         })}
       </StyledResults>
     </ResultsWrap>

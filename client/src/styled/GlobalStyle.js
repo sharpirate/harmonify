@@ -23,6 +23,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${theme.fonts.primary};
     letter-spacing: 1px;
     position: relative;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none
   }
 
   ul {

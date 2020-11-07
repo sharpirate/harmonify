@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import theme from '../../styled/theme';
+import { connect } from 'react-redux';
 
 const StyledResult = styled.li`
   display: inline-flex;
@@ -31,13 +32,21 @@ const ResultName = styled.p`
   overflow-wrap: break-word;
 `;
 
-function Result({ img, name }) {
+function Result({ img, name, id, selectArtist }) {
   return (
-    <StyledResult>
+    <StyledResult onClick={() => selectArtist(id)}>
       <ResultImg src={img} draggable="false" />
       <ResultName>{name}</ResultName>
     </StyledResult>
   );
 }
 
-export default Result;
+function mapDispatchToProps(dispatch) {
+  return {
+    selectArtist: id => {
+      dispatch({type: 'SELECT_ARTIST', id: id});
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Result);

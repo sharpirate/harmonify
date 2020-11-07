@@ -1,13 +1,14 @@
 import React from 'react';
 import GlobalStyle from '../styled/GlobalStyle';
 import Header from './Header';
+import Selected from './Selected';
 
 function App() {
   return (
     <React.Fragment>
       <GlobalStyle />
-      <Header>
-      </Header>
+      <Header />
+      <Selected />
     </React.Fragment>
   );
 }

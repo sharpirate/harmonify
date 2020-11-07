@@ -1,20 +1,15 @@
-const initState = {
-  selectedArtist: {
-    name: 'Aerosmith',
-    id: '1dksdpkasdal'
-  },
-  selectedTrack: {
-    name: 'Crying',
-    id: 'a1djd1wojoais'
-  }
+const initialState = {
+  selectedArtist: {}
 }
 
-function rootReducer(state = initState, action) {
+function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'SELECT_ARTIST':
+      console.log('action dispatched');
+      console.log(action);
       break;
-    case 'SELECT_TRACK':
-      break;
+    default:
+      return state;
   }
 }
 
