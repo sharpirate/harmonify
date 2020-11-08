@@ -17,6 +17,7 @@ const Heading = styled.h2`
   word-spacing: 5px;
   color: ${theme.colors.light};
   margin-bottom: 2rem;
+  text-transform: uppercase;
 `;
 
 function Section({ name, children, type="section"}) {

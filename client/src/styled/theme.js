@@ -7,7 +7,7 @@ const theme = {
 
   fonts: {
     primary: 'Roboto, sans-serif',
-    heading: 'Intro Demo',
+    heading: 'Intro Black, sans-serif',
   },
 
   search: {
