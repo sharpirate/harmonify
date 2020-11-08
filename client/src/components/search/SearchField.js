@@ -52,7 +52,7 @@ function SearchField(props) {
       <StyledInput
         type="text"
         placeholder="Search For An Artist"
-        spellcheck="false"
+        spellCheck="false"
         value={props.value}
         onChange={props.handleInput}
         onFocus={props.handleFocus}
