@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import theme from '../styled/theme';
-import Artist from './Artist';
-import Track from './Track';
 import { recordTheme } from '../styled/recordTheme';
+import { selectedTrackTheme } from '../styled/recordTheme';
 import chooseImage from '../utils/chooseImage';
 import Item from './Item';
 
@@ -16,15 +15,16 @@ const StyledCollection = styled.ul`
   border-radius: ${theme.radius};
 `;
 
-function Collection({ items, type, defaultImg }) {
+function Collection({ items, type, trackId, defaultImg }) {
   return (
     <StyledCollection>
       {items.map(item => {
+        const theme = (trackId === item.id) ? selectedTrackTheme : recordTheme;
         return (
           <Item
             item={item}
             type={type}
-            theme={recordTheme}
+            theme={theme}
             key={item.id}
             img={chooseImage(item.images, defaultImg)}
           />

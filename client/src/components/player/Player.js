@@ -14,13 +14,13 @@ const StyledPlayer = styled.div`
   border-radius: ${theme.radius};
 `;
 
-function Player() {
+function Player({ source }) {
   return (
     <StyledPlayer>
       <Title>Aerosmith - Amaizing</Title>
       <Range />
       <Controls />
-      <Audio source="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" />
+      <Audio source={source} />
     </StyledPlayer>
   );
 }

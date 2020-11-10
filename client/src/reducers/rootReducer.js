@@ -1,4 +1,7 @@
 const initialState = {
+  selectedTrack: {
+    id: null,
+  },
   selectedArtist: {
     "external_urls" : {
       "spotify" : "https://open.spotify.com/artist/0OdUWJ0sBjDrqHygGUXeCF"

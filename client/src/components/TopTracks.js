@@ -6,8 +6,17 @@ import { connect } from 'react-redux';
 import Collection from './Collection';
 import { selectedTrackTheme } from '../styled/recordTheme';
 
-function TopTracks({ artistId }) {
+function TopTracks({ artistId, trackId }) {
   const [tracks, setTracks] = useState([]);
+  const [playSrc, setPlaySrc] = useState(null);
+
+  useEffect(() => {
+    if (trackId) {
+      console.log('SELECTED TRACK WITH ID: ' + trackId);
+      console.log(tracks.find(cur => cur.id === trackId));
+      setPlaySrc(tracks.find(cur => cur.id === trackId).preview_url);
+    }
+  }, [trackId]);
 
   useEffect(() => {
     console.log('use effect top tracks')
@@ -18,15 +27,16 @@ function TopTracks({ artistId }) {
 
   return (
     <Section name="Top Tracks">
-      <Collection items={tracks} type="track" defaultImg="https://cdn0.iconfinder.com/data/icons/internet-2020/1080/Applemusicandroid-512.png" />
-      <Player />
+      <Collection items={tracks} trackId={trackId} type="track" defaultImg="https://cdn0.iconfinder.com/data/icons/internet-2020/1080/Applemusicandroid-512.png" />
+      <Player source={playSrc} />
     </Section>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    artistId: state.selectedArtist.id
+    artistId: state.selectedArtist.id,
+    trackId: state.selectedTrack.id,
   }
 }
 
