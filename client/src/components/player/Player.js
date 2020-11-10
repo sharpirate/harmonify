@@ -15,14 +15,16 @@ const StyledPlayer = styled.div`
 `;
 
 function Player({ source }) {
-  return (
-    <StyledPlayer>
-      <Title>Aerosmith - Amaizing</Title>
-      <Range />
-      <Controls />
-      <Audio source={source} />
-    </StyledPlayer>
-  );
+  // return (
+  //   // <StyledPlayer>
+  //     {/* <Title>Aerosmith - Amaizing</Title>
+  //     <Range />
+  //     <Controls /> */}
+  //     <Audio source={source} />
+  //   // </StyledPlayer>
+  // );
+
+  return <Audio source={source} />
 }
 
 export default Player;
