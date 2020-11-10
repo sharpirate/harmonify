@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Section from './Section';
-import Records from './Records';
+// import Records from './Records';
+import Collection from './Collection';
 import { connect } from 'react-redux';
 
 function Related({ artistId, selectArtist }) {
@@ -15,7 +16,7 @@ function Related({ artistId, selectArtist }) {
 
   return (
     <Section name="Related Artists">
-      <Records records={artists} />
+      <Collection items={artists} type="artist" />
     </Section>
   );
 }

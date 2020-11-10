@@ -3,6 +3,7 @@ import Section from './Section';
 import Records from './Records';
 import Player from './player/Player';
 import { connect } from 'react-redux';
+import Collection from './Collection';
 
 function TopTracks({ artistId }) {
   const [tracks, setTracks] = useState([]);
@@ -16,7 +17,7 @@ function TopTracks({ artistId }) {
 
   return (
     <Section name="Top Tracks">
-      <Records records={tracks} defaultImg="https://vignette.wikia.nocookie.net/venturian-battle-headquarters/images/b/b1/Record_13.png/revision/latest?cb=20160730164224" />
+      <Collection items={tracks} type="track" defaultImg="https://cdn0.iconfinder.com/data/icons/internet-2020/1080/Applemusicandroid-512.png" />
       <Player />
     </Section>
   );

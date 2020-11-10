@@ -1,5 +1,4 @@
 import styled, { ThemeProvider } from 'styled-components';
-import theme from '../styled/theme';
 import { connect } from 'react-redux';
 
 const StyledArtist = styled.li`
@@ -14,7 +13,7 @@ const ArtistName = styled.p`
   ${props => props.theme.nameStyle};
 `;
 
-function Artist({ artist, img, selectArtist, theme }) {
+function Artist({ artist, img, theme, selectArtist }) {
   return (
     <ThemeProvider theme={theme}>
       <StyledArtist onClick={() => selectArtist(artist)}>

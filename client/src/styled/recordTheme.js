@@ -20,7 +20,7 @@
 import { css } from 'styled-components';
 import theme from './theme';
 
-export const RecordStyle = css`
+const RecordStyle = css`
   width: ${theme.record.size}px;
   height: ${theme.record.size}px;
   border-radius: ${theme.radius};
@@ -34,13 +34,30 @@ export const RecordStyle = css`
 
   margin: 0 ${theme.record.gap}rem;
   transition: transform 0.3s ease;
+
   :hover {
     background: ${theme.colors.primary};
     transform: scale(1.1);
   }
 `;
 
-export const RecordImgStyle = css`
+const SelectedArtist = css`
+  ${RecordStyle};
+
+  background: ${theme.colors.primary};
+  margin: 0;
+  transition: none;
+  transform: scale(${theme.record.scaleFactor});
+  transform-origin: top center;
+
+  margin-bottom: ${theme.record.size * (theme.record.scaleFactor - 1)}px;
+
+  :hover {
+    transform: scale(${theme.record.scaleFactor});
+  }
+`;
+
+const ImgStyle = css`
   border-radius: 50%;
   height: 50%;
   width: 50%;
@@ -48,9 +65,20 @@ export const RecordImgStyle = css`
   background: url(${props => props.img}) no-repeat center center/cover;
 `;
 
-export const RecordNameStyle = css`
+const NameStyle = css`
   color: ${theme.colors.light};
   font-size: ${theme.record.size * 0.08}px;
   text-align: center;
   max-width: 90%;
 `;
+
+export const recordTheme = {
+  rootStyle: RecordStyle,
+  imgStyle: ImgStyle,
+  nameStyle: NameStyle,
+};
+
+export const selectedArtistTheme = {
+  ...recordTheme,
+  rootStyle: SelectedArtist,
+};

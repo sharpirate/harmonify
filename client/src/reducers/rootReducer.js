@@ -37,9 +37,16 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'SELECT_ARTIST':
+      console.log('SELECT_ARTIST');
       return {
         ...state,
-        selectedArtist: action.artist,
+        selectedArtist: action.item,
+      };
+    case 'SELECT_TRACK':
+      console.log('SELECT_TRACK');
+      return {
+        ...state,
+        selectedTrack: action.item,
       }
     default:
       return state;

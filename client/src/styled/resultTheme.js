@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import theme from './theme';
 
-export const ResultStyle = css`
+const ResultStyle = css`
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
@@ -15,7 +15,8 @@ export const ResultStyle = css`
     transform: scale(1.04);
   }
 `;
-export const ResultImgStyle = css`
+
+const ImgStyle = css`
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -23,10 +24,18 @@ export const ResultImgStyle = css`
   background: url(${props => props.img}) no-repeat center center/cover;
 `;
 
-export const RestultNameStyle = css`
+const NameStyle = css`
   font-size: 1rem;
   color: ${theme.colors.light};
   /* name overflow */
   max-width: 220px;
   overflow-wrap: break-word;
 `;
+
+const resultTheme = {
+  rootStyle: ResultStyle,
+  imgStyle: ImgStyle,
+  nameStyle: NameStyle,
+};
+
+export default resultTheme;
