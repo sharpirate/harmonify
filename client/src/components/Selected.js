@@ -3,7 +3,7 @@ import Record from './Record';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { selectedArtistTheme } from '../styled/recordTheme';
-import Artist from './Artist';
+import Item from './Item';
 
 function Selected({ artist }) {
   
@@ -17,7 +17,7 @@ function Selected({ artist }) {
 
   return artist ? (
     <Section name="Selected Artist">
-      <Artist artist={artist} img={chooseImage(artist.images)} theme={selectedArtistTheme} />
+      <Item item={artist} type="artist" img={chooseImage(artist.images)} theme={selectedArtistTheme} />
     </Section>
   ) : null;
 }

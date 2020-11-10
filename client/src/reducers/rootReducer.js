@@ -47,7 +47,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         selectedTrack: action.item,
-      }
+      };
     default:
       return state;
   }

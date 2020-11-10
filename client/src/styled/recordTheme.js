@@ -57,6 +57,13 @@ const SelectedArtist = css`
   }
 `;
 
+const SelectedTrack = css`
+  ${RecordStyle};
+
+  transform: scale(1.1);
+  background: ${theme.colors.primary};
+`;
+
 const ImgStyle = css`
   border-radius: 50%;
   height: 50%;
@@ -81,4 +88,9 @@ export const recordTheme = {
 export const selectedArtistTheme = {
   ...recordTheme,
   rootStyle: SelectedArtist,
+};
+
+export const selectedTrackTheme = {
+  ...recordTheme,
+  rootStyle: SelectedTrack,
 };

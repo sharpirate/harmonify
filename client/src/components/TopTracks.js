@@ -4,6 +4,7 @@ import Records from './Records';
 import Player from './player/Player';
 import { connect } from 'react-redux';
 import Collection from './Collection';
+import { selectedTrackTheme } from '../styled/recordTheme';
 
 function TopTracks({ artistId }) {
   const [tracks, setTracks] = useState([]);

@@ -3,6 +3,7 @@ import theme from '../../styled/theme';
 import Title from './Title';
 import Range from './Range';
 import Controls from './Controls';
+import Audio from './Audio';
 
 const StyledPlayer = styled.div`
   color: ${theme.colors.light};
@@ -19,6 +20,7 @@ function Player() {
       <Title>Aerosmith - Amaizing</Title>
       <Range />
       <Controls />
+      <Audio source="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" />
     </StyledPlayer>
   );
 }
