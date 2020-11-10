@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 import Result from './Result';
 import theme from '../../styled/theme';
 import chooseImage from '../../utils/chooseImage';
+import Artist from '../Artist';
+import { resultTheme } from '../../styled/artistTheme';
 
 const ResultsWrap = styled.div`
   background: ${theme.colors.primary};
@@ -38,7 +40,7 @@ function Results({ results, defaultImg, fade }) {
     <ResultsWrap fade={fade}>
       <StyledResults>
         {results.map(result => {
-          return <Result artist={result} key={result.id} img={chooseImage(result.images, defaultImg)} />
+          return <Artist theme={resultTheme} artist={result} key={result.id} img={chooseImage(result.images, defaultImg)} />
         })}
       </StyledResults>
     </ResultsWrap>
