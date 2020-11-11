@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import theme from '../styled/theme';
 import { recordTheme } from '../styled/recordTheme';
-import { selectedTrackTheme } from '../styled/recordTheme';
+import { playingTrackTheme } from '../styled/recordTheme';
 import chooseImage from '../utils/chooseImage';
 import Item from './Item';
 
@@ -19,7 +19,7 @@ function Collection({ items, type, trackId, defaultImg }) {
   return (
     <StyledCollection>
       {items.map(item => {
-        const theme = (trackId === item.id) ? selectedTrackTheme : recordTheme;
+        const theme = (type === 'track' && trackId === item.id) ? playingTrackTheme : recordTheme;
         return (
           <Item
             item={item}

@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 import theme from '../../styled/theme';
-import Title from './Title';
-import Range from './Range';
-import Controls from './Controls';
 import Audio from './Audio';
 
 const StyledPlayer = styled.div`

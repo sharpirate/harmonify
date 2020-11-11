@@ -6,9 +6,16 @@ import { connect } from 'react-redux';
 import Collection from './Collection';
 import { selectedTrackTheme } from '../styled/recordTheme';
 
-function TopTracks({ artistId, trackId }) {
+function TopTracks({ artistId, trackId, isPlaying }) {
   const [tracks, setTracks] = useState([]);
   const [playSrc, setPlaySrc] = useState(null);
+
+  useEffect(() => {
+    if (!isPlaying) {
+      console.log('inside here!');
+      setPlaySrc(null);
+    }
+  }, [isPlaying]);
 
   useEffect(() => {
     if (trackId) {
@@ -19,7 +26,7 @@ function TopTracks({ artistId, trackId }) {
   }, [trackId]);
 
   useEffect(() => {
-    console.log('use effect top tracks')
+    console.log('use effect top tracks');
     fetch(`/api/top-tracks/${artistId}`)
       .then(res => res.json())
       .then(data => setTracks(data));
@@ -37,6 +44,7 @@ function mapStateToProps(state) {
   return {
     artistId: state.selectedArtist.id,
     trackId: state.selectedTrack.id,
+    isPlaying: state.isPlaying,
   }
 }
 

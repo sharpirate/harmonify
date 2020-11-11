@@ -2,6 +2,7 @@ const initialState = {
   selectedTrack: {
     id: null,
   },
+  isPlaying: false,
   selectedArtist: {
     "external_urls" : {
       "spotify" : "https://open.spotify.com/artist/0OdUWJ0sBjDrqHygGUXeCF"
@@ -47,9 +48,21 @@ function rootReducer(state = initialState, action) {
       };
     case 'SELECT_TRACK':
       console.log('SELECT_TRACK');
+      console.log('IS PLAYING: ', state.isPlaying);
+
+      let playingState;
+
+      // if you've selected the same track invert the playing state
+      if (action.item.id === state.selectedTrack.id) {
+        playingState = !state.isPlaying;
+      } else {
+        playingState = true;
+      }
+      
       return {
         ...state,
         selectedTrack: action.item,
+        isPlaying: playingState,
       };
     default:
       return state;

@@ -19,6 +19,8 @@
 
 import { css } from 'styled-components';
 import theme from './theme';
+import playIcon from '../assets/svg/play.svg';
+import pauseIcon from '../assets/svg/pause.svg';
 
 const RecordStyle = css`
   width: ${theme.record.size}px;
@@ -57,11 +59,47 @@ const SelectedArtist = css`
   }
 `;
 
-const SelectedTrack = css`
+const PlayingTrack = css`
   ${RecordStyle};
 
   transform: scale(1.1);
   background: ${theme.colors.primary};
+  position: relative;
+
+  ::after {
+    position: absolute;
+    content: '';
+    width: 70px;
+    height: 70px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: center center/cover;
+    background-image: url(${props => props.isPlaying ? pauseIcon : playIcon});
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  ::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: ${theme.radius};
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  :hover::before {
+    opacity: 1;
+  }
+
+  :hover::after {
+    opacity: 1;
+  }
 `;
 
 const ImgStyle = css`
@@ -90,7 +128,7 @@ export const selectedArtistTheme = {
   rootStyle: SelectedArtist,
 };
 
-export const selectedTrackTheme = {
+export const playingTrackTheme = {
   ...recordTheme,
-  rootStyle: SelectedTrack,
+  rootStyle: PlayingTrack,
 };
