@@ -1,6 +1,5 @@
 import styled, { ThemeProvider } from 'styled-components';
 import { connect } from 'react-redux';
-import { useEffect, useState } from 'react';
 
 const StyledItem = styled.li`
   ${props => props.theme.rootStyle};
@@ -15,10 +14,6 @@ const ItemName = styled.p`
 `;
 
 function Item({ item, type, img, theme, selectItem, isPlaying }) {
-  useEffect(() => {
-    console.log('IS PLAYING HOOK');
-  }, [isPlaying]);
-
   return (
     <ThemeProvider theme={theme}>
       <StyledItem isPlaying={type === 'track' && isPlaying} onClick={() => selectItem(item, type)}>

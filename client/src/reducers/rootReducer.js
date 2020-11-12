@@ -45,6 +45,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         selectedArtist: action.item,
+        isPlaying: false,
       };
     case 'SELECT_TRACK':
       console.log('SELECT_TRACK');
@@ -63,6 +64,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         selectedTrack: action.item,
         isPlaying: playingState,
+      };
+    case 'SET_IS_PLAYING':
+      return {
+        ...state,
+        isPlaying: action.isPlaying,
       };
     default:
       return state;

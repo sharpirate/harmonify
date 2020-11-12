@@ -10,26 +10,23 @@ function TopTracks({ artistId, trackId, isPlaying }) {
   const [tracks, setTracks] = useState([]);
   const [playSrc, setPlaySrc] = useState(null);
 
-  useEffect(() => {
-    if (!isPlaying) {
-      console.log('inside here!');
-      setPlaySrc(null);
-    }
-  }, [isPlaying]);
+  // useEffect(() => {
+  //   if (!isPlaying) {
+  //     console.log('inside here!');
+  //     setPlaySrc(null);
+  //   }
+  // }, [isPlaying]);
 
   useEffect(() => {
     if (trackId) {
-      console.log('SELECTED TRACK WITH ID: ' + trackId);
-      console.log(tracks.find(cur => cur.id === trackId));
       setPlaySrc(tracks.find(cur => cur.id === trackId).preview_url);
     }
   }, [trackId]);
 
   useEffect(() => {
-    console.log('use effect top tracks');
     fetch(`/api/top-tracks/${artistId}`)
       .then(res => res.json())
-      .then(data => setTracks(data));
+      .then(data => setTracks(data)); 
   }, [artistId]);
 
   return (
