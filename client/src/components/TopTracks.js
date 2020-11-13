@@ -10,13 +10,6 @@ function TopTracks({ artistId, trackId, isPlaying }) {
   const [tracks, setTracks] = useState([]);
   const [playSrc, setPlaySrc] = useState(null);
 
-  // useEffect(() => {
-  //   if (!isPlaying) {
-  //     console.log('inside here!');
-  //     setPlaySrc(null);
-  //   }
-  // }, [isPlaying]);
-
   useEffect(() => {
     if (trackId) {
       setPlaySrc(tracks.find(cur => cur.id === trackId).preview_url);
@@ -29,18 +22,18 @@ function TopTracks({ artistId, trackId, isPlaying }) {
       .then(data => setTracks(data)); 
   }, [artistId]);
 
-  return (
+  return tracks.length ? (
     <Section name="Top Tracks">
       <Collection items={tracks} trackId={trackId} type="track" defaultImg="https://cdn0.iconfinder.com/data/icons/internet-2020/1080/Applemusicandroid-512.png" />
       <Player source={playSrc} />
     </Section>
-  );
+  ) : null;
 }
 
 function mapStateToProps(state) {
   return {
-    artistId: state.selectedArtist.id,
-    trackId: state.selectedTrack.id,
+    artistId: state.selectedArtist ? state.selectedArtist.id : null,
+    trackId: state.selectedTrack ? state.selectedTrack.id : null,
     isPlaying: state.isPlaying,
   }
 }

@@ -14,16 +14,16 @@ function Related({ artistId, selectArtist }) {
       .then(data => setArtists(data));
   }, [artistId]);
 
-  return (
+  return artists.length ? (
     <Section name="Related Artists">
       <Collection items={artists} type="artist" />
     </Section>
-  );
+  ) : null;
 }
 
 function mapStateToProps(state) {
   return {
-    artistId: state.selectedArtist.id
+    artistId: state.selectedArtist ? state.selectedArtist.id : null
   }
 }
 
