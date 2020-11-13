@@ -3,8 +3,10 @@ const app = express();
 const axios = require('axios');
 const btoa = require('btoa');
 
-const CLIENT_ID = 'd9c317f2ee2f44d6b1a943f56999299e';
-const CLIENT_SECRET = 'ed6758fd58a144359a9482b1f1bada89';
+require('dotenv').config();
+
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 const port = 5000;
 let token;
