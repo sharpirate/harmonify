@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Results from './Results';
 import SearchField from './SearchField';
+import debounce from '../../utils/debounce';
 
 const SearchWrap = styled.div``;
 
@@ -10,16 +11,6 @@ function Search() {
   const [results, setResults] = useState([]);
   const [resultsVisible, setResultsVisible] = useState(false);
   const fieldRef = useRef();
-
-  function debounce(callback, wait) {
-    let timerId;
-    return (...args) => {
-      clearTimeout(timerId);
-      timerId = setTimeout(() => {
-        callback(...args);
-      }, wait);
-    };
-  }
 
   const handleInput = debounce((e) => {
     fetch(`/api/search/${e.target.value}`)
