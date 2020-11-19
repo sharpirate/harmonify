@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import theme from '../../styled/theme';
 import searchIcon from '../../assets/svg/search.svg';
@@ -46,21 +47,20 @@ const SearchIcon = styled.img`
   pointer-events: none;
 `;
 
-function SearchField(props) {
-  return (
-    <StyledSearchField>
-      <StyledInput
-        type="text"
-        placeholder="Search For An Artist"
-        spellCheck="false"
-        value={props.value}
-        onChange={props.handleInput}
-        onFocus={props.handleFocus}
-        onBlur={props.handleBlur}
-      />
-      <SearchIcon src={searchIcon} />
-    </StyledSearchField>
-  );
-}
+const SearchField = React.forwardRef((props, ref) => (
+  <StyledSearchField>
+    <StyledInput
+      ref={ref}
+      type="text"
+      placeholder="Search For An Artist"
+      spellCheck="false"
+      value={props.value}
+      onChange={props.handleInput}
+      onFocus={props.handleFocus}
+      onBlur={props.handleBlur}
+    />
+    <SearchIcon src={searchIcon} />
+  </StyledSearchField>
+));
 
 export default SearchField;

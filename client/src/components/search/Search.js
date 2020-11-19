@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Results from './Results';
 import SearchField from './SearchField';
@@ -9,6 +9,7 @@ function Search() {
   // const [fieldValue, setFieldValue] = useState('');
   const [results, setResults] = useState([]);
   const [resultsVisible, setResultsVisible] = useState(false);
+  const fieldRef = useRef();
 
   function debounce(callback, wait) {
     let timerId;
@@ -38,6 +39,7 @@ function Search() {
     // catch the click on a result before hiding them
     setTimeout(setResultsVisible.bind(this, false), 150);
     // e.taget.value = '';
+    fieldRef.current.value = '';
   }
 
   // useEffect(() => {
@@ -55,6 +57,7 @@ function Search() {
   return (
     <SearchWrap>
       <SearchField
+        ref={fieldRef}
         handleInput={handleInput}
         handleFocus={handleFocus}
         handleBlur={handleBlur}
