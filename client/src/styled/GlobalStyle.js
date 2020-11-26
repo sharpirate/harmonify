@@ -18,7 +18,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    height: 100vh;
     background: url(${bg}) fixed center center/cover;
     font-family: ${theme.fonts.primary};
     letter-spacing: 1px;
