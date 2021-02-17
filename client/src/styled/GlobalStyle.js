@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import theme from './theme';
 import bg from '../assets/svg/nightSky.svg';
-import IntroDemoWoff from '../assets/fonts/IntroDemo-BlackCAPS.woff';
-import IntroDemoWoff2 from '../assets/fonts/IntroDemo-BlackCAPS.woff2';
 
 const GlobalStyle = createGlobalStyle`
   * {

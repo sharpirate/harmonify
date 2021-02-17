@@ -13,13 +13,16 @@ function Search() {
   const fieldRef = useRef();
 
   const handleInput = debounce((e) => {
-    fetch(`/api/search/${e.target.value}`)
+    if (e.target.value) {
+      fetch(`/api/search/${e.target.value}`)
         .then(res => res.json())
         .then(data => {
           console.log(e.target.value)
           console.log(data);
           setResults(data);
-        });
+        })
+        .catch(err => console.log('ERROR SEARCH FRONT-END'));
+    }
   }, 300)
 
   function handleFocus() {

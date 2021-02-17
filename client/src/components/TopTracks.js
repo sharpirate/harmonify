@@ -17,9 +17,12 @@ function TopTracks({ artistId, trackId, isPlaying }) {
   }, [trackId]);
 
   useEffect(() => {
-    fetch(`/api/top-tracks/${artistId}`)
-      .then(res => res.json())
-      .then(data => setTracks(data)); 
+    if (artistId) {
+      console.log('USE EFFECT TOP TRACKS');
+      fetch(`/api/top-tracks/${artistId}`)
+        .then(res => res.json())
+        .then(data => setTracks(data)); 
+    } 
   }, [artistId]);
 
   return tracks.length ? (

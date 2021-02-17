@@ -8,10 +8,12 @@ function Related({ artistId, selectArtist }) {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-    console.log('use effect related')
-    fetch(`/api/related-artists/${artistId}`)
-      .then(res => res.json())
-      .then(data => setArtists(data));
+    if (artistId) {
+      console.log('USE EFFECT RELATED')
+      fetch(`/api/related-artists/${artistId}`)
+        .then(res => res.json())
+        .then(data => setArtists(data));
+    }
   }, [artistId]);
 
   return artists.length ? (

@@ -13,7 +13,8 @@ let token;
 
 // Get token
 getToken(CLIENT_ID, CLIENT_SECRET)
-  .then(res => token = res);
+  .then(res => token = res)
+  .catch(err => console.log('ERROR GET TOKEN'));
 
 // Start the server
 app.listen(port, () => {
@@ -22,24 +23,34 @@ app.listen(port, () => {
 
 // Search endpoint
 app.get('/api/search/:query', async (req, res) => {
-  console.log('received search request');
-  const artists = await searchArtist(req.params.query, token);
-
-  if (artists.length > 0)
-    res.json(artists);
+  console.log('received search request', req.params.query);
+  try {
+    const artists = await searchArtist(req.params.query, token);
+    if (artists.length > 0)
+      res.json(artists);
+  } catch(err) {
+    console.log('ERROR SEARCH')
+  }
 });
 
 // Top Tracks endpoint
 app.get('/api/top-tracks/:id', async (req, res) => {
-  const tracks = await getTopTracks(req.params.id, 5, token);
-  res.json(tracks);
+  try {
+    const tracks = await getTopTracks(req.params.id, 5, token);
+    res.json(tracks);
+  } catch (err) {
+    console.log('TOP TRACKS ERROR')
+  }
 });
 
 // Related Artists endpoint
 app.get('/api/related-artists/:id', async (req, res) => {
-  const artists = await getRelatedArtists(req.params.id, 5, token);
-  console.log('related')
-  res.json(artists);
+  try {
+    const artists = await getRelatedArtists(req.params.id, 5, token);
+    res.json(artists);
+  } catch (err) {
+    console.log('RELATED ERROR');
+  }
 });
 
 async function getToken(clientId, clientSecret) {
