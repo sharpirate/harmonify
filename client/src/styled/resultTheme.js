@@ -17,19 +17,20 @@ const ResultStyle = css`
 `;
 
 const ImgStyle = css`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   margin-right: 1rem;
   background: url(${props => props.img}) no-repeat center center/cover;
 `;
 
 const NameStyle = css`
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: ${theme.colors.light};
   /* name overflow */
-  max-width: 220px;
-  overflow-wrap: break-word;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const resultTheme = {

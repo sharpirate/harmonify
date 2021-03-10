@@ -11,8 +11,8 @@ const theme = {
   },
 
   search: {
-    width: 320, // px
-    height: 60 // px
+    width: 256, // px
+    height: 48 // px
   },
 
   range: {
@@ -22,7 +22,7 @@ const theme = {
   },
 
   record: {
-    size: 180, // px
+    size: 160, // px
     gap: 1, // rem
     scaleFactor: 1.3,
   },

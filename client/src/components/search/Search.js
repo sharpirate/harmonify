@@ -4,7 +4,9 @@ import Results from './Results';
 import SearchField from './SearchField';
 import debounce from '../../utils/debounce';
 
-const SearchWrap = styled.div``;
+const SearchWrap = styled.div`
+  overflow: hidden;
+`;
 
 function Search() {
   // const [fieldValue, setFieldValue] = useState('');
@@ -56,7 +58,7 @@ function Search() {
         handleFocus={handleFocus}
         handleBlur={handleBlur}
       />
-      {resultsVisible ? <Results results={results} defaultImg="https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png" /> : null}
+      <Results visible={resultsVisible} results={results} defaultImg="https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png" />
     </SearchWrap>
   );
 }

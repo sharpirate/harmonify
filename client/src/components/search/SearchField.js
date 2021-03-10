@@ -21,7 +21,7 @@ const StyledInput = styled.input`
 
   color: #858585;
   font-family: ${theme.fonts.primary};
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 300;
   text-align: center;
 

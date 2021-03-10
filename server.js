@@ -14,7 +14,7 @@ let token;
 // Get token
 getToken(CLIENT_ID, CLIENT_SECRET)
   .then(res => token = res)
-  .catch(err => console.log('ERROR GET TOKEN'));
+  .catch(err => console.error('Error when getting a token.'));
 
 // Start the server
 app.listen(port, () => {
@@ -29,7 +29,7 @@ app.get('/api/search/:query', async (req, res) => {
     if (artists.length > 0)
       res.json(artists);
   } catch(err) {
-    console.log('ERROR SEARCH')
+    console.error('Error when searching.');
   }
 });
 
@@ -59,7 +59,7 @@ async function getToken(clientId, clientSecret) {
     url: 'https://accounts.spotify.com/api/token',
     headers: {
       'Authorization': 'Basic ' + btoa(`${clientId}:${clientSecret}`),
-      'content-type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
     data: 'grant_type=client_credentials'
   };
@@ -100,7 +100,7 @@ async function getTopTracks(id, limit = 5, token) {
 
 async function getRelatedArtists(id, limit = 5, token) {
   const config = {
-    method: 'get',
+    method: 'GET',
     url: `https://api.spotify.com/v1/artists/${id}/related-artists`,
     headers: {
       'Authorization': `Bearer ${token}`,

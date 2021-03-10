@@ -59,13 +59,7 @@ const SelectedArtist = css`
   }
 `;
 
-const PlayingTrack = css`
-  ${RecordStyle};
-
-  transform: scale(1.1);
-  background: ${theme.colors.primary};
-  position: relative;
-
+const trackAvailable = css`
   ::after {
     position: absolute;
     content: '';
@@ -92,6 +86,41 @@ const PlayingTrack = css`
     opacity: 0;
     transition: opacity 0.2s ease;
   }
+`;
+
+const trackUnavailable = css`
+  ::after {
+    position: absolute;
+    content: 'Track Unavailable';
+    color: #fff;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  ::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(3px);
+    border-radius: ${theme.radius};
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+`;
+
+const PlayingTrack = css`
+  ${RecordStyle};
+
+  transform: scale(1.1);
+  background: ${theme.colors.primary};
+  position: relative;
+
+  ${props => console.log(props)};
+  ${props => props.isAvailable ? trackAvailable : trackUnavailable};
 
   :hover::before {
     opacity: 1;

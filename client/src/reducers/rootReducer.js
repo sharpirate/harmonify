@@ -21,10 +21,15 @@ function rootReducer(state = initialState, action) {
 
       let playingState;
 
-      // if you've selected the same track invert the playing state
-      if (action.item.id === state.selectedTrack.id) {
+      if (action.item.preview_url === null) {
+        // if the track doesn't have a preview_url pause the playback
+        playingState = false;
+      } else if (action.item.id === state.selectedTrack.id) {
+        // if you've selected the same track invert the playing state
         playingState = !state.isPlaying;
-      } else {
+      } 
+      else {
+        // if the track has a preview_url and it's different from the previous track
         playingState = true;
       }
       
