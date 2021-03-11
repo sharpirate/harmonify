@@ -39,7 +39,7 @@ app.get('/api/top-tracks/:id', async (req, res) => {
     const tracks = await getTopTracks(req.params.id, 5, token);
     res.json(tracks);
   } catch (err) {
-    console.log('TOP TRACKS ERROR')
+    console.error('Error when getting Top Tracks.');
   }
 });
 
@@ -49,7 +49,7 @@ app.get('/api/related-artists/:id', async (req, res) => {
     const artists = await getRelatedArtists(req.params.id, 5, token);
     res.json(artists);
   } catch (err) {
-    console.log('RELATED ERROR');
+    console.log('Error when getting related artists.');
   }
 });
 
@@ -95,6 +95,7 @@ async function getTopTracks(id, limit = 5, token) {
   };
 
   const res = await axios(config);
+
   return res.data.tracks.slice(0, limit);
 }
 
@@ -109,5 +110,6 @@ async function getRelatedArtists(id, limit = 5, token) {
   };
 
   const res = await axios(config);
+  
   return res.data.artists.slice(0, limit);
 }

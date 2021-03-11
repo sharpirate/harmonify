@@ -1,22 +1,3 @@
-// const selectedStyle = css`
-//   background: ${theme.colors.primary};
-//   margin: 0;
-//   transition: none;
-//   transform: scale(${theme.record.scaleFactor});
-//   transform-origin: top center;
-
-//   margin-bottom: ${theme.record.size * (theme.record.scaleFactor - 1)}px;
-// `;
-
-// const defaultStyle = css`
-//   margin: 0 ${theme.record.gap}rem;
-//   transition: transform 0.3s ease;
-//   :hover {
-//     background: ${theme.colors.primary};
-//     transform: scale(1.1);
-//   }
-// `;
-
 import { css } from 'styled-components';
 import theme from './theme';
 import playIcon from '../assets/svg/play.svg';
@@ -92,7 +73,7 @@ const trackUnavailable = css`
   ::after {
     position: absolute;
     content: 'Track Unavailable';
-    color: #fff;
+    color: ${theme.colors.light};
     font-size: 14px;
     opacity: 0;
     transition: opacity 0.2s ease;
@@ -119,7 +100,6 @@ const PlayingTrack = css`
   background: ${theme.colors.primary};
   position: relative;
 
-  ${props => console.log(props)};
   ${props => props.isAvailable ? trackAvailable : trackUnavailable};
 
   :hover::before {

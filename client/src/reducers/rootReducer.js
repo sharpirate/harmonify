@@ -9,16 +9,12 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'SELECT_ARTIST':
-      console.log('SELECT_ARTIST');
       return {
         ...state,
         selectedArtist: action.item,
         isPlaying: false,
       };
     case 'SELECT_TRACK':
-      console.log('SELECT_TRACK');
-      console.log('IS PLAYING: ', state.isPlaying);
-
       let playingState;
 
       if (action.item.preview_url === null) {

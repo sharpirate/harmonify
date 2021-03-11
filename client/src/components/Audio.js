@@ -17,10 +17,6 @@ function Audio({ source, isPlaying, setIsPlaying }) {
     }
   }, [isPlaying]);
 
-  function handleEnd() {
-    console.log('ENDDD');
-  }
-
   return (
     <audio onEnded={setIsPlaying.bind(this, false)} ref={audioRef} src={source} autoPlay></audio>
   );

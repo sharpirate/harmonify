@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import Section from './Section';
-// import Records from './Records';
 import Collection from './Collection';
 import { connect } from 'react-redux';
 
-function Related({ artistId, selectArtist }) {
+function Related({ artistId }) {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
     if (artistId) {
-      console.log('USE EFFECT RELATED')
       fetch(`/api/related-artists/${artistId}`)
         .then(res => res.json())
-        .then(data => setArtists(data));
+        .then(data => setArtists(data))
+        .catch(err => console.error(err.message));
     }
   }, [artistId]);
 

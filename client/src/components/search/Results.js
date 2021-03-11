@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import theme from '../../styled/theme';
 import chooseImage from '../../utils/chooseImage';
 import Item from '../Item';

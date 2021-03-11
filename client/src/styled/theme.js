@@ -1,4 +1,12 @@
+import trackImg from '../assets/svg/trackImg.svg';
+import artistImg from '../assets/svg/artistImg.svg';
+
 const theme = {
+  images: {
+    artist: artistImg,
+    track: trackImg,
+  },
+
   colors: {
     primary: 'rgba(14, 35, 31, 0.6)',
     primarySolid: 'rgb(14, 35, 31)',
