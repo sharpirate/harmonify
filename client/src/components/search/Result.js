@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import theme from '../../styled/theme';
 import { connect } from 'react-redux';
-import chooseImage from '../../utils/chooseImage';
 
 const StyledResult = styled.li`
   display: inline-flex;

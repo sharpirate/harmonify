@@ -9,22 +9,23 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'SELECT_ARTIST':
-      console.log('SELECT_ARTIST');
       return {
         ...state,
         selectedArtist: action.item,
         isPlaying: false,
       };
     case 'SELECT_TRACK':
-      console.log('SELECT_TRACK');
-      console.log('IS PLAYING: ', state.isPlaying);
-
       let playingState;
 
-      // if you've selected the same track invert the playing state
-      if (action.item.id === state.selectedTrack.id) {
+      if (action.item.preview_url === null) {
+        // if the track doesn't have a preview_url pause the playback
+        playingState = false;
+      } else if (action.item.id === state.selectedTrack.id) {
+        // if you've selected the same track invert the playing state
         playingState = !state.isPlaying;
-      } else {
+      } 
+      else {
+        // if the track has a preview_url and it's different from the previous track
         playingState = true;
       }
       

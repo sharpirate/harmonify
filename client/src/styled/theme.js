@@ -1,4 +1,12 @@
+import trackImg from '../assets/svg/trackImg.svg';
+import artistImg from '../assets/svg/artistImg.svg';
+
 const theme = {
+  images: {
+    artist: artistImg,
+    track: trackImg,
+  },
+
   colors: {
     primary: 'rgba(14, 35, 31, 0.6)',
     primarySolid: 'rgb(14, 35, 31)',
@@ -11,8 +19,8 @@ const theme = {
   },
 
   search: {
-    width: 320, // px
-    height: 60 // px
+    width: 256, // px
+    height: 48 // px
   },
 
   range: {
@@ -22,7 +30,7 @@ const theme = {
   },
 
   record: {
-    size: 180, // px
+    size: 160, // px
     gap: 1, // rem
     scaleFactor: 1.3,
   },

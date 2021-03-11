@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import Section from './Section';
-import Records from './Records';
-import Player from './player/Player';
+import Audio from './Audio';
 import { connect } from 'react-redux';
 import Collection from './Collection';
-import { selectedTrackTheme } from '../styled/recordTheme';
+import theme from '../styled/theme';
 
-function TopTracks({ artistId, trackId, isPlaying }) {
+function TopTracks({ artistId, trackId }) {
   const [tracks, setTracks] = useState([]);
   const [playSrc, setPlaySrc] = useState(null);
 
@@ -18,17 +17,17 @@ function TopTracks({ artistId, trackId, isPlaying }) {
 
   useEffect(() => {
     if (artistId) {
-      console.log('USE EFFECT TOP TRACKS');
       fetch(`/api/top-tracks/${artistId}`)
         .then(res => res.json())
-        .then(data => setTracks(data)); 
+        .then(data => setTracks(data))
+        .catch(err => console.error(err.message)); 
     } 
   }, [artistId]);
 
   return tracks.length ? (
     <Section name="Top Tracks">
-      <Collection items={tracks} trackId={trackId} type="track" defaultImg="https://cdn0.iconfinder.com/data/icons/internet-2020/1080/Applemusicandroid-512.png" />
-      <Player source={playSrc} />
+      <Collection items={tracks} trackId={trackId} type="track" defaultImg={theme.images.track} />
+      <Audio source={playSrc} />
     </Section>
   ) : null;
 }

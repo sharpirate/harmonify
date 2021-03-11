@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react';
 import Section from './Section';
-// import Records from './Records';
 import Collection from './Collection';
 import { connect } from 'react-redux';
+import theme from '../styled/theme';
 
-function Related({ artistId, selectArtist }) {
+function Related({ artistId }) {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
     if (artistId) {
-      console.log('USE EFFECT RELATED')
       fetch(`/api/related-artists/${artistId}`)
         .then(res => res.json())
-        .then(data => setArtists(data));
+        .then(data => setArtists(data))
+        .catch(err => console.error(err.message));
     }
   }, [artistId]);
 
   return artists.length ? (
     <Section name="Related Artists">
-      <Collection items={artists} type="artist" />
+      <Collection items={artists} type="artist" defaultImg={theme.images.artist}/>
     </Section>
   ) : null;
 }

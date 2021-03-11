@@ -1,8 +1,15 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import theme from '../../styled/theme';
 import chooseImage from '../../utils/chooseImage';
 import Item from '../Item';
 import resultTheme from '../../styled/resultTheme';
+
+const ResultsAnimWrap = styled.div`
+  overflow: hidden;
+  position: relative;
+  top: -${theme.search.height * 0.5}px;
+  padding-top: ${theme.search.height * 0.5}px;
+`;
 
 const ResultsWrap = styled.div`
   background: ${theme.colors.primary};
@@ -12,6 +19,9 @@ const ResultsWrap = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+
+  transform: ${props => props.visible ? 'translateY(0)' : 'translateY(-100%)'};
+  transition: transform 0.4s ease;
 
   &::before {
     content: '';
@@ -33,16 +43,18 @@ const StyledResults = styled.ul`
   padding: 1rem 0;
 `;
 
-function Results({ results, defaultImg, fade }) {
+function Results({ results, defaultImg, visible }) {
   // hide results if empty
   return results.length ? (
-    <ResultsWrap fade={fade}>
-      <StyledResults>
-        {results.map(result => {
-          return <Item theme={resultTheme} type="artist" item={result} key={result.id} img={chooseImage(result.images, defaultImg)} />
-        })}
-      </StyledResults>
-    </ResultsWrap>
+    <ResultsAnimWrap>
+      <ResultsWrap visible={visible}>
+        <StyledResults>
+          {results.map(result => {
+            return <Item theme={resultTheme} type="artist" item={result} key={result.id} img={chooseImage(result.images, defaultImg)} />
+          })}
+        </StyledResults>
+      </ResultsWrap>
+    </ResultsAnimWrap>
   ) : null;
 }
 

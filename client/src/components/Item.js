@@ -16,7 +16,7 @@ const ItemName = styled.p`
 function Item({ item, type, img, theme, selectItem, isPlaying }) {
   return (
     <ThemeProvider theme={theme}>
-      <StyledItem isPlaying={type === 'track' && isPlaying} onClick={() => selectItem(item, type)}>
+      <StyledItem isPlaying={type === 'track' && isPlaying} isAvailable={item.preview_url} onClick={() => selectItem(item, type)}>
         <ItemImg img={img} />
         <ItemName>{item.name}</ItemName>
       </StyledItem>

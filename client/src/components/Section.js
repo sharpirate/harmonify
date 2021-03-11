@@ -12,7 +12,7 @@ const StyledSection = styled.section`
 
 const Heading = styled.h2`
   font-family: ${theme.fonts.heading};
-  font-size: 2rem;
+  font-size: 1.5rem;
   letter-spacing: 2px;
   word-spacing: 5px;
   color: ${theme.colors.light};
