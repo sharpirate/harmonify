@@ -2,14 +2,17 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 const btoa = require('btoa');
+const path = require("path")
 
 require('dotenv').config();
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 let token;
+
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 // Get token
 getToken(CLIENT_ID, CLIENT_SECRET)
@@ -51,6 +54,11 @@ app.get('/api/related-artists/:id', async (req, res) => {
   } catch (err) {
     console.log('Error when getting related artists.');
   }
+});
+
+// Fallback to main page
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 async function getToken(clientId, clientSecret) {
