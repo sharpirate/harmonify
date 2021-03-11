@@ -32,7 +32,7 @@ app.get('/api/search/:query', async (req, res) => {
     if (artists.length > 0)
       res.json(artists);
   } catch(err) {
-    console.error('Error when searching.');
+    console.error(err.message);
   }
 });
 

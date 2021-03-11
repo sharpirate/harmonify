@@ -22,6 +22,13 @@ const RecordStyle = css`
     background: ${theme.colors.primary};
     transform: scale(1.1);
   }
+
+  // use the bigSize for calculating on mobile
+  @media ${theme.breakpoints.columnLayout} {
+    margin: ${theme.record.gap}rem 0;
+    width: ${theme.record.bigSize}px;
+    height: ${theme.record.bigSize}px;
+  }
 `;
 
 const SelectedArtist = css`
@@ -34,6 +41,10 @@ const SelectedArtist = css`
   transform-origin: top center;
 
   margin-bottom: ${theme.record.size * (theme.record.scaleFactor - 1)}px;
+  
+  @media ${theme.breakpoints.columnLayout} {
+    margin-bottom: ${theme.record.bigSize * (theme.record.scaleFactor - 1)}px;
+  }
 
   :hover {
     transform: scale(${theme.record.scaleFactor});
