@@ -8,6 +8,10 @@ const StyledSection = styled.section`
   align-items: center;
   
   margin-bottom: 10rem;
+
+  @media ${theme.breakpoints.columnLayout} {
+    margin-bottom: ${props => props.name === 'Related Artists' ? 0 : '5rem'};
+  }
 `;
 
 const Heading = styled.h2`
@@ -22,7 +26,7 @@ const Heading = styled.h2`
 
 function Section({ name, children, type="section"}) {
   return (
-    <StyledSection as={type}>
+    <StyledSection name={name} as={type}>
       <Heading>{name}</Heading>
       {children}
     </StyledSection>

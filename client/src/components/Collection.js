@@ -13,6 +13,13 @@ const StyledCollection = styled.ul`
 
   background: ${theme.colors.primary};
   border-radius: ${theme.radius};
+
+  @media ${theme.breakpoints.columnLayout} {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 0;
+    padding: ${theme.record.gap}rem ${theme.record.gap * 2}rem;
+  }
 `;
 
 function Collection({ items, type, trackId, defaultImg }) {
