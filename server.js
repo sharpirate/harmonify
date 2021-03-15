@@ -62,6 +62,7 @@ app.get("*", (req, res) => {
 });
 
 async function getToken(clientId, clientSecret) {
+  console.log('Getting Bearer Token.');
   const config = {
     method: 'post',
     url: 'https://accounts.spotify.com/api/token',
