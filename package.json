@@ -21,15 +21,15 @@
   "author": "Sharpirate",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.24.0",
     "btoa": "^1.2.1",
-    "concurrently": "^5.3.0",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "react-redux": "^7.2.2",
-    "redux": "^4.0.5"
+    "concurrently": "^7.0.0",
+    "dotenv": "^11.0.0",
+    "express": "^4.17.2",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2"
   }
 }
